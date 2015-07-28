@@ -1,0 +1,19 @@
+language: node_js
+
+node_js:
+  - "0.12.4"
+
+before_install:
+  - npm install -g npm
+
+install:
+  - npm install
+
+script:
+
+  # Detect errors and potential problems
+  - npm run eslint -- --reset --eslintrc ./
+  - npm run jscs -- ./
+
+  # Run unit tests (and check for coverage)
+  - npm test
