@@ -1,0 +1,27 @@
+{
+  "name": "sinet-git-refs",
+  "version": "1.0.0",
+  "description": "Determine references of a git repository via JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'No tests exist'",
+    "eslint": "eslint",
+    "jscs": "jscs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/School-Improvement-Network/git-refs.git"
+  },
+  "author": "School Improvement Network",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/School-Improvement-Network/git-refs/issues"
+  },
+  "homepage": "https://github.com/School-Improvement-Network/git-refs#readme",
+  "devDependencies": {
+    "sinet-coding-conventions": "^1.31.0"
+  },
+  "dependencies": {
+    "glob": "^5.0.14"
+  }
+}
