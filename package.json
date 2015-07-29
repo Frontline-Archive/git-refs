@@ -1,5 +1,5 @@
 {
-  "name": "sinet-git-refs",
+  "name": "@sinet/git-refs",
   "version": "1.0.0",
   "description": "Determine references of a git repository via JavaScript",
   "main": "index.js",

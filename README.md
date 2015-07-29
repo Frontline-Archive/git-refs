@@ -12,14 +12,14 @@ Tags aren't currently implemented, because they require being able to read the t
 ## Usage
 
 ```bash
-npm install sinet-git-refs --save
+npm install @sinet/git-refs --save
 ```
 
 ### Example
 ```javascript
-var gitRefs = require( 'sinet-git-refs' );
+var gitRefs = require( '@sinet/git-refs' );
 
-gitRefs( '/path/to/.git', function ( error, refs) {
+gitRefs( '/path/to/.git', function ( error, refs ) {
 	if ( error ) {
 		return console.log( error );
 	}
