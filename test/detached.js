@@ -5,15 +5,21 @@ var assert = require( 'assert' );
 
 describe( 'detached HEAD with no remotes or local branches', function () {
 	var result;
+	var error;
 
 	before( function ( done ) {
 
 		var gitRefs = require( '../' );
 
-		gitRefs( 'test/fixtures/detached', function ( error, refs ) {
+		gitRefs( 'test/fixtures/detached', function ( err, refs ) {
 			result = refs;
+			error  = err;
 			done();
 		} );
+	} );
+
+	it( 'should not have thrown an error', function () {
+		assert.strictEqual( error, null );
 	} );
 
 	it( 'should have current, heads and remotes keys', function () {

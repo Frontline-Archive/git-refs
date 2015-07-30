@@ -33,6 +33,7 @@
     "sinet-istanbul-coverage-enforcement": "^1.0.0"
   },
   "dependencies": {
-    "glob": "^5.0.14"
+    "glob": "^5.0.14",
+    "object-manage": "^0.8.0"
   }
 }
