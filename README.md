@@ -1,5 +1,5 @@
 # Git Refs
-[![Build Status][travis-badge]][travis-badge-link]
+[![Build Status][ci-badge]][ci-badge-link]
 [![Dependency Status][david-badge]][david-badge-link]
 [![devDependency Status][david-dev-badge]][david-dev-badge-link]
 
@@ -40,5 +40,5 @@ All pull requests must follow [coding conventions and standards](https://github.
 [david-dev-badge]: https://david-dm.org/School-Improvement-Network/container-status/dev-status.svg
 [david-dev-badge-link]: https://david-dm.org/School-Improvement-Network/container-status
 [david-dev-badge-link]: https://david-dm.org/School-Improvement-Network/container-status#info=devDependencies
-[travis-badge]: https://travis-ci.org/School-Improvement-Network/container-status.svg
-[travis-badge-link]: https://travis-ci.org/School-Improvement-Network/container-status
+[ci-badge]: https://circleci.com/gh/School-Improvement-Network/git-refs.svg?style=shield
+[ci-badge-link]: https://circleci.com/gh/School-Improvement-Network/git-refs
