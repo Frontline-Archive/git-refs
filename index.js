@@ -2,10 +2,16 @@
 
 var fs        = require( 'fs' );
 var glob      = require( 'glob' );
-var path      = require( 'path' );
 var ObjManage = require( 'object-manage' );
+var path      = require( 'path' );
 
 module.exports = function ( gitDirectory, callback ) {
+	var defaults = {
+		'heads'   : {},
+		'remotes' : {}
+	};
+
+	var refs = new ObjManage( defaults );
 
 	// Use the current .git folder if not passed in
 	if ( typeof gitDirectory === 'function' ) {
@@ -18,26 +24,21 @@ module.exports = function ( gitDirectory, callback ) {
 		'read' : { 'encoding' : 'utf8' }
 	};
 
-	// Get all of the references
-	function getRefs ( directory ) {
-
+	function getRefsFiles ( directory ) {
 		// Find all the files in the refs folder
 		var files = glob.sync( path.join( directory, 'refs', '**', '*' ), options.glob );
 
-		var defaults = {
-			'heads'   : {},
-			'remotes' : {}
-		};
+		files.forEach( function ( filePath ) {
 
-		var refs = new ObjManage( defaults );
-
-		files.forEach( function ( file ) {
-
-			var currentRef   = file.replace( path.join( directory, 'refs' ) + path.sep, '' ).replace( /[\/]/g, '.' );
-			var fileContents = fs.readFileSync( file, options.read ).replace( /\n/, '' );
+			var currentRef   = filePath.replace( path.join( directory, 'refs' ) + path.sep, '' ).replace( /[\/]/g, '.' );
+			var fileContents = fs.readFileSync( filePath, options.read ).replace( /\n/, '' );
 
 			refs.$set( currentRef, fileContents );
 		} );
+	}
+
+	function getRefs ( directory ) {
+		getRefsFiles( directory );
 
 		// Set the current head
 		var current = fs.readFileSync( path.join( directory, 'HEAD' ), options.read ).replace( /\n/, '' );
@@ -49,7 +50,6 @@ module.exports = function ( gitDirectory, callback ) {
 		if ( current.match( 'ref' ) ) {
 			var referencePath = current.split( /\s+/ )[ 1 ];
 			refs.$set( 'current.ref', referencePath );
-
 			// Get the key to find the reference
 			var key = referencePath.replace( /refs[\/]/, '' ).split( /[\/]/ );
 
