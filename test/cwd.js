@@ -1,15 +1,13 @@
 'use strict';
 
 require( 'should' );
-var assert = require( 'assert' );
+const assert = require( 'assert' );
 
 describe( 'current (cwd) directory HEAD with remotes and local branches', function () {
-	var result;
-	var error;
+	let result, error;
 
 	before( function ( done ) {
-
-		var gitRefs = require( '../' );
+		let gitRefs = require( '../' );
 
 		// By not passing in a `gitDirectory` it will use the current git folder
 		gitRefs( function ( err, refs ) {
@@ -33,5 +31,4 @@ describe( 'current (cwd) directory HEAD with remotes and local branches', functi
 	it( 'should have correct current HEAD', function () {
 		result.current.head.should.be.of.type( 'string' ).and.be.lengthOf( 40 );
 	} );
-
 } );

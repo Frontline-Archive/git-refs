@@ -1,15 +1,13 @@
 'use strict';
 
 require( 'should' );
-var assert = require( 'assert' );
+const assert = require( 'assert' );
 
 describe( 'pull request referenced HEAD with remotes and local branches', function () {
-	var result;
-	var error;
+	let result, error;
 
 	before( function ( done ) {
-
-		var gitRefs = require( '../' );
+		let gitRefs = require( '../' );
 
 		gitRefs( 'test/fixtures/pull', function ( err, refs ) {
 			result = refs;
@@ -40,7 +38,7 @@ describe( 'pull request referenced HEAD with remotes and local branches', functi
 	} );
 
 	it( 'should have correct remotes', function () {
-		var remotes = result.remotes;
+		let remotes = result.remotes;
 
 		// Should have (2) remotes (origin and upstream)
 		Object.keys( remotes ).length.should.be.of.type( 'number' ).and.equal( 2 );
@@ -52,5 +50,4 @@ describe( 'pull request referenced HEAD with remotes and local branches', functi
 		// Check upstream remote
 		remotes.upstream.master.should.be.of.type( 'string' ).and.equal( 'de944492d4164ceffa7600ef96c4ee6f00000032' );
 	} );
-
 } );

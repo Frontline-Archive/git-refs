@@ -3,12 +3,10 @@
 require( 'should' );
 
 describe( 'basic referenced HEAD with remotes and local branches', function () {
-
-	var result;
+	let result;
 
 	before( function ( done ) {
-
-		var gitRefs = require( '../' );
+		let gitRefs = require( '../' );
 
 		gitRefs( 'test/fixtures/basic', function ( error, refs ) {
 			result = refs;
@@ -34,7 +32,7 @@ describe( 'basic referenced HEAD with remotes and local branches', function () {
 	} );
 
 	it( 'should have correct remotes', function () {
-		var remotes = result.remotes;
+		let remotes = result.remotes;
 
 		// Should have (2) remotes (origin and upstream)
 		Object.keys( remotes ).length.should.be.of.type( 'number' ).and.equal( 2 );
@@ -46,5 +44,4 @@ describe( 'basic referenced HEAD with remotes and local branches', function () {
 		// Check upstream remote
 		remotes.upstream.master.should.be.of.type( 'string' ).and.equal( 'de944492d4164ceffa7600ef96c4ee6f00000032' );
 	} );
-
 } );

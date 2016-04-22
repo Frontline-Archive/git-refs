@@ -20,7 +20,7 @@ npm install @sinet/git-refs --save
 
 ### Example
 ```javascript
-var gitRefs = require( '@sinet/git-refs' );
+const gitRefs = require( '@sinet/git-refs' );
 
 gitRefs( '/path/to/.git', function ( error, refs ) {
 	if ( error ) {

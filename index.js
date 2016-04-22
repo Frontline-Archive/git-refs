@@ -1,17 +1,17 @@
 'use strict';
 
-var fs        = require( 'fs' );
-var glob      = require( 'glob' );
-var ObjManage = require( 'object-manage' );
-var path      = require( 'path' );
+const fs        = require( 'fs' );
+const glob      = require( 'glob' );
+const ObjManage = require( 'object-manage' );
+const path      = require( 'path' );
 
 module.exports = function ( gitDirectory, callback ) {
-	var defaults = {
+	let defaults = {
 		'heads'   : {},
 		'remotes' : {}
 	};
 
-	var refs = new ObjManage( defaults );
+	let refs = new ObjManage( defaults );
 
 	// Use the current .git folder if not passed in
 	if ( typeof gitDirectory === 'function' ) {
@@ -19,19 +19,18 @@ module.exports = function ( gitDirectory, callback ) {
 		gitDirectory = '.git';
 	}
 
-	var options = {
+	let options = {
 		'glob' : { 'nodir' : true },
 		'read' : { 'encoding' : 'utf8' }
 	};
 
 	function getRefsFiles ( directory ) {
 		// Find all the files in the refs folder
-		var files = glob.sync( path.join( directory, 'refs', '**', '*' ), options.glob );
+		let files = glob.sync( path.join( directory, 'refs', '**', '*' ), options.glob );
 
 		files.forEach( function ( filePath ) {
-
-			var currentRef   = filePath.replace( path.join( directory, 'refs' ) + path.sep, '' ).replace( /[\/]/g, '.' );
-			var fileContents = fs.readFileSync( filePath, options.read ).replace( /\n/, '' );
+			let currentRef   = filePath.replace( path.join( directory, 'refs' ) + path.sep, '' ).replace( /[\/]/g, '.' );
+			let fileContents = fs.readFileSync( filePath, options.read ).replace( /\n/, '' );
 
 			refs.$set( currentRef, fileContents );
 		} );
@@ -41,17 +40,18 @@ module.exports = function ( gitDirectory, callback ) {
 		getRefsFiles( directory );
 
 		// Set the current head
-		var current = fs.readFileSync( path.join( directory, 'HEAD' ), options.read ).replace( /\n/, '' );
+		let current = fs.readFileSync( path.join( directory, 'HEAD' ), options.read ).replace( /\n/, '' );
 
 		refs.$set( 'current.head', current );
 		refs.$set( 'current.ref', null );
 
 		// Find actual reference if it points to another location
 		if ( current.match( 'ref' ) ) {
-			var referencePath = current.split( /\s+/ )[ 1 ];
+			let referencePath = current.split( /\s+/ )[ 1 ];
+
 			refs.$set( 'current.ref', referencePath );
 			// Get the key to find the reference
-			var key = referencePath.replace( /refs[\/]/, '' ).split( /[\/]/ );
+			let key = referencePath.replace( /refs[\/]/, '' ).split( /[\/]/ );
 
 			refs.$set( 'current.head', refs.$get( key ) );
 		}

@@ -1,15 +1,13 @@
 'use strict';
 
 require( 'should' );
-var assert = require( 'assert' );
+const assert = require( 'assert' );
 
 describe( 'detached HEAD with no remotes or local branches', function () {
-	var result;
-	var error;
+	let result, error;
 
 	before( function ( done ) {
-
-		var gitRefs = require( '../' );
+		let gitRefs = require( '../' );
 
 		gitRefs( 'test/fixtures/detached', function ( err, refs ) {
 			result = refs;
@@ -41,5 +39,4 @@ describe( 'detached HEAD with no remotes or local branches', function () {
 	it( 'should have no remotes', function () {
 		Object.keys( result.remotes ).length.should.be.of.type( 'number' ).and.equal( 0 );
 	} );
-
 } );
