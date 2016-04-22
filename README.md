@@ -33,12 +33,12 @@ gitRefs( '/path/to/.git', function ( error, refs ) {
 ```
 
 ## Contributing
-All pull requests must follow [coding conventions and standards](https://github.com/School-Improvement-Network/coding-conventions).
+All pull requests must follow [coding conventions and standards](https://github.com/sinet/coding-conventions).
 
-[david-badge]: https://david-dm.org/School-Improvement-Network/git-refs.svg
-[david-badge-link]: https://david-dm.org/School-Improvement-Network/container-status
-[david-dev-badge]: https://david-dm.org/School-Improvement-Network/container-status/dev-status.svg
-[david-dev-badge-link]: https://david-dm.org/School-Improvement-Network/container-status
-[david-dev-badge-link]: https://david-dm.org/School-Improvement-Network/container-status#info=devDependencies
-[ci-badge]: https://circleci.com/gh/School-Improvement-Network/git-refs.svg?style=shield
-[ci-badge-link]: https://circleci.com/gh/School-Improvement-Network/git-refs
+[david-badge]: https://david-dm.org/sinet/git-refs.svg
+[david-badge-link]: https://david-dm.org/sinet/container-status
+[david-dev-badge]: https://david-dm.org/sinet/container-status/dev-status.svg
+[david-dev-badge-link]: https://david-dm.org/sinet/container-status
+[david-dev-badge-link]: https://david-dm.org/sinet/container-status#info=devDependencies
+[ci-badge]: https://circleci.com/gh/sinet/git-refs.svg?style=shield
+[ci-badge-link]: https://circleci.com/gh/sinet/git-refs

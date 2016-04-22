@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/School-Improvement-Network/git-refs.git"
+    "url": "git+https://github.com/sinet/git-refs.git"
   },
   "author": "School Improvement Network",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/School-Improvement-Network/git-refs/issues"
+    "url": "https://github.com/sinet/git-refs/issues"
   },
-  "homepage": "https://github.com/School-Improvement-Network/git-refs#readme",
+  "homepage": "https://github.com/sinet/git-refs#readme",
   "devDependencies": {
     "del": "^1.2.0",
     "eslint": "^0.24.1",
