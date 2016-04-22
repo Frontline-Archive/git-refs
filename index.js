@@ -36,8 +36,34 @@ module.exports = function ( gitDirectory, callback ) {
 		} );
 	}
 
+	function getRefsPacked ( directory ) {
+		try {
+			let packedFile = path.join( directory, 'packed-refs' );
+
+			// See if the file exists before trying to read it
+			fs.accessSync( packedFile, fs.F_OK );
+
+			let file      = fs.readFileSync( packedFile, options.read );
+			let fileLines = file.split( '\n' );
+
+			fileLines.forEach( function ( line ) {
+				line = line.split( ' ' );
+
+				// Only parse commit lines
+				// TODO: update to handle tags properly. It shows the tag commit hash instead of what it's point at.
+				if ( line[ 0 ].length === 40 ) {
+					line[ 1 ] = line[ 1 ].replace( 'refs' + path.sep, '' ).replace( /[\/]/g, '.' );
+					refs.$set( line[ 1 ], line[ 0 ] );
+				}
+			} );
+		} catch ( error ) {
+			return;
+		}
+	}
+
 	function getRefs ( directory ) {
 		getRefsFiles( directory );
+		getRefsPacked( directory );
 
 		// Set the current head
 		let current = fs.readFileSync( path.join( directory, 'HEAD' ), options.read ).replace( /\n/, '' );
