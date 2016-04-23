@@ -62,8 +62,8 @@ module.exports = function ( gitDirectory, callback ) {
 	}
 
 	function getRefs ( directory ) {
-		getRefsFiles( directory );
 		getRefsPacked( directory );
+		getRefsFiles( directory );
 
 		// Set the current head
 		let current = fs.readFileSync( path.join( directory, 'HEAD' ), options.read ).replace( /\n/, '' );
